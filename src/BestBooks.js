@@ -8,15 +8,16 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: '',
+      books: [],
     };
   }
 
   /* DONE: Make a GET request to your API to fetch books for the logged in user  */
   async componentDidMount() {
-    let response = await axios.get(`${SERVER}/books`);
+    let response = await axios.get(
+      `${SERVER}/books?email=${this.props.user.email}`
+    );
     console.log(response.data);
-    // set response from axios to state
     try {
       this.setState({ books: response.data });
     } catch (error) {
@@ -24,60 +25,26 @@ class BestBooks extends React.Component {
     }
   }
 
-  // add this.state.books to render return
-
   render() {
-    /* TODO: render user's books in a Carousel */
-
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-        {this.state.books ? (
-          // render this.state.books here in a carosel
-          // <p>Book Carousel coming soon</p>
-          <Carousel>
-            {this.state.books.map(book => {
-              return (
-                // <Carousel.Item>
-                //   <Book
-                //     title={book.title}
-                //     description={book.description}
-                //     status={book.status}
-                //     email={book.email}
-                //   ></Book>
-                // </Carousel.Item>
-
-                <Carousel.Item>
-                  <img
-                    className='d-block w-100'
-                    src='./assets/book_image.jpeg'
-                    alt='Second slide'
-                  />
-                  <Carousel.Caption>
-                    <h3>{this.state.title}l</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              );
-            })}
-
-            {/*<Carousel.Item>
-              <img
-                className='d-block w-100'
-                src='holder.js/800x400?text=Third slide&bg=20232a'
-                alt='Third slide'
-              />
-              <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item> */}
+        {this.state.books.length > 0 ? (
+          <Carousel className='w-50'>
+            {this.state.books.map(book => (
+              <Carousel.Item key={book._id}>
+                <img
+                  className='d-block w-100'
+                  src='https://designshack.net/articles/software/placeholder-image/'
+                  alt={book.description}
+                />
+                <Carousel.Caption>
+                  <h3>{book.title}l</h3>
+                  <p>{book.description}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
           </Carousel>
         ) : (
           <h3>No Books Found :(</h3>
