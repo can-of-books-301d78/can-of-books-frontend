@@ -16,4 +16,6 @@ class Header extends React.Component {
   }
 }
 
+// this comment is for testing - can be deleted once merged
+
 export default Header;
