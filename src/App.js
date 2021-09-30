@@ -7,27 +7,29 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Profile from './Profile';
 
+const SERVER = process.env.REACT_APP_SERVER;
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: undefined,
     };
   }
 
   loginHandler = user => {
     this.setState({
-      user,
+      user: user,
     });
   };
 
-  logoutHandler = () => {
-    this.setState({
-      user: null,
+  logoutHandler = async () => {
+    await this.setState({
+      user: undefined,
     });
   };
 
   render() {
+    console.log(this.state.user)
     return (
       <>
         <Router>
@@ -50,5 +52,7 @@ class App extends React.Component {
     );
   }
 }
+
+// this comment is to test a bug - this can be deleted after it is merged
 
 export default App;
