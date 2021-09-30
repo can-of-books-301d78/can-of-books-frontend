@@ -30,6 +30,4 @@ super(props);
   }
 }
 
-// this comment is for testing - can be deleted once merged
-
 export default Header;
