@@ -52,4 +52,6 @@ class App extends React.Component {
   }
 }
 
+// this comment is to test a bug - this can be deleted after it is merged
+
 export default App;
