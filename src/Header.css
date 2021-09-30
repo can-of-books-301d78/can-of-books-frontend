@@ -5,3 +5,8 @@ a{
 a:hover{
   color:darkgrey;
 }
+
+.logout {
+  margin-left: 69%;
+  /* nice */
+}
