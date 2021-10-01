@@ -16,19 +16,18 @@ class BestBooks extends React.Component {
   /* DONE: Make a GET request to your API to fetch books for the logged in user  */
   async componentDidMount() {
     try {
-    axios.get(`${SERVER}/books?email=${this.props.user.email}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'access-control-allow-origin': '*'
-        }
-      }
-      ).then(response => {
+      axios
+        .get(`${SERVER}/books?email=${this.props.user.email}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'access-control-allow-origin': '*',
+          },
+        })
+        .then(response => {
+          this.setState({ books: response.data });
+        });
 
-        this.setState({ books: response.data });
-      })
-    
-    /*
+      /*
     let response = await axios.get(
       `${SERVER}/books?email=${this.props.user.email}`
     );
@@ -38,10 +37,12 @@ class BestBooks extends React.Component {
       console.log(error);
     }
   }
-
+  // LOOK AT JB's code for hints
+  // write function for onCreate that makes a POST request to /books with body as content from BOokFormModal form and email comming from user (login). User email should be attached as a query string
+  // pass onCreate function to AddBookButton
   render() {
     let books;
-    if(this.state.books.length > 0){
+    if (this.state.books.length > 0) {
       books = this.state.books.map(book => (
         <Carousel.Item key={book._id}>
           <img
@@ -54,16 +55,14 @@ class BestBooks extends React.Component {
             <p>{book.description}</p>
           </Carousel.Caption>
         </Carousel.Item>
-      ))
+      ));
     }
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-          <AddBookButton />
+        <AddBookButton />
         {this.state.books.length > 0 ? (
-          <Carousel className='w-50'>
-            {books}
-          </Carousel>
+          <Carousel className='w-50'>{books}</Carousel>
         ) : (
           <h3>No Books Found :(</h3>
         )}
