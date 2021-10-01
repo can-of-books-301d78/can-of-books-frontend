@@ -37,9 +37,20 @@ class BestBooks extends React.Component {
       console.log(error);
     }
   }
+  
   // LOOK AT JB's code for hints
   // write function for onCreate that makes a POST request to /books with body as content from BOokFormModal form and email comming from user (login). User email should be attached as a query string
+  handleCreate = async (bookInfo) => {
+    const newBookResponse = await axios.post(SERVER, bookInfo);
+    
+
+    // this.getBooks();// DANGER: losing location
+  };
   // pass onCreate function to AddBookButton
+
+  
+  
+  
   render() {
     let books;
     if (this.state.books.length > 0) {
