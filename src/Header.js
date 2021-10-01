@@ -5,9 +5,10 @@ import './Header.css';
 import { Button } from 'react-bootstrap';
 
 class Header extends React.Component {
-constructor(props){
-super(props);
-}
+// constructor(props){
+// super(props);
+// }
+
   render() {
     let navItem;
     let logout;
