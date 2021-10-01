@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import Profile from './Profile';
 
-const SERVER = process.env.REACT_APP_SERVER;
 class App extends React.Component {
   constructor(props) {
     super(props);
