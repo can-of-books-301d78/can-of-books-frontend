@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
+import AddBookButton from './AddBookButton';
 
 const SERVER = process.env.REACT_APP_SERVER;
 console.log(SERVER);
@@ -58,7 +59,7 @@ class BestBooks extends React.Component {
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
+          <AddBookButton />
         {this.state.books.length > 0 ? (
           <Carousel className='w-50'>
             {books}
