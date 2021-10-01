@@ -9,6 +9,7 @@ class AddBookButton extends Component {
     this.state = { showForm: false };
   }
 
+  // bring in function for onCreate as props and pass to bookformmodal
   handleClick = () => {
     this.setState({
       showForm: true,
@@ -19,18 +20,16 @@ class AddBookButton extends Component {
     this.setState({
       showForm: false,
     });
-  }
+  };
 
   render() {
     return (
       <>
-        <Button onClick={this.handleClick}>
-          Add a book!
-        </Button>
-        <BookFormModal close={this.handleClose} show={this.state.showForm}/>
+        <Button onClick={this.handleClick}>Add a book!</Button>
+        <BookFormModal close={this.handleClose} show={this.state.showForm} />
       </>
-        )
+    );
   }
 }
 
-        export default AddBookButton;
+export default AddBookButton;
