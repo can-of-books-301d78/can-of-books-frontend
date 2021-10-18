@@ -7,11 +7,12 @@ import { Button } from 'react-bootstrap';
 class BookFormModal extends Component {
   handleSubmit = event => {
     event.preventDefault();
-    console.log(event.target.formTitle);
+    // console.log(event.target.formTitle);
     const newBookInfo = {
       title: event.target.formTitle.value,
       status: event.target.formStatus.value,
       description: event.target.formDescription.value,
+      // email: event.target.userEmail.value,
     };
     this.props.onCreate(newBookInfo);
     this.props.close();
