@@ -26,7 +26,11 @@ class AddBookButton extends Component {
     return (
       <>
         <Button onClick={this.handleClick}>Add a book!</Button>
-        <BookFormModal close={this.handleClose} show={this.state.showForm} />
+        <BookFormModal
+          close={this.handleClose}
+          show={this.state.showForm}
+          onCreate={this.props.onCreate}
+        />
       </>
     );
   }
